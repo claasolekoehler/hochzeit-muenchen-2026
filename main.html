@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wir heiraten! - [Eure Namen]</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Globales Styling & Mobile First --- */
+        
+        :root {
+            --bg-color: #fdfaf6; /* Warmes Creme/Weiß */
+            --text-color: #4a4a4a; /* Dunkelgrau */
+            --accent-color: #8A9A8D; /* Salbeigrün */
+            --heading-font: 'Playfair Display', serif;
+            --body-font: 'Lato', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--body-font);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--heading-font);
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: #555;
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* --- Header / Hero --- */
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            background-color: #fff;
+        }
+        
+        .header h1 {
+            margin-bottom: 10px;
+        }
+
+        .header .sub-title {
+            font-size: 1.4rem;
+            font-family: var(--heading-font);
+            font-style: italic;
+        }
+
+        /* --- Sektionen --- */
+        
+        /* 1. RSVP (Zeeg) Sektion */
+        #rsvp {
+            text-align: center;
+        }
+        
+        .rsvp-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .rsvp-button:hover {
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+
+        /* 2. Video Sektion */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        /* 3. Details Sektion (Grid für Desktop) */
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Mobile: 1 Spalte */
+            gap: 30px;
+        }
+        
+        /* 4. Spotify Sektion */
+        .spotify-wrapper {
+            margin-top: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 12px; /* Spotify empfiehlt 12px */
+            overflow: hidden; /* Stellt sicher, dass der iframe die abgerundeten Ecken übernimmt */
+        }
+
+        .spotify-wrapper iframe {
+            display: block; /* Verhindert Leerräume unter dem iframe */
+        }
+
+        /* 5. Location Sektion */
+        #location .location-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .location-photos {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 Spalten für Fotos */
+            gap: 15px;
+        }
+        
+        .map-wrapper {
+            /* Gleicher Wrapper wie für das Video */
+            position: relative;
+            padding-bottom: 75%; /* Google Maps ist oft quadratischer */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .map-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        /* --- Responsive: Desktop Ansicht --- */
+        
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 4rem;
+            }
+            
+            h2 {
+                font-size: 2.8rem;
+            }
+
+            /* Details Sektion auf Desktop (2 Spalten) */
+            .details-grid {
+                grid-template-columns: 1fr 1fr; /* Desktop: 2 Spalten */
+                gap: 50px;
+            }
+            
+            /* Location Sektion auf Desktop (2 Spalten) */
+            #location .location-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+                align-items: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1></h1>
+            <p class="sub-title">Wir heiraten!</p>
+            <p><strong>15. August 2026</strong></p>
+        </div>
+    </header>
+
+    <main>
+        <section id="rsvp">
+            <div class="container">
+                <h2>Wir freuen uns auf Euch!</h2>
+                <p>Bitte gebt uns bis zum <strong>[DATUM DER FRIST]</strong> Bescheid, ob ihr dabei sein könnt. Über den folgenden Link könnt ihr euch und eure Begleitung verbindlich anmelden und uns eventuelle Allergien oder Wünsche mitteilen.</p>
+                <br>
+                
+                <a href="#" target="_blank" class="rsvp-button">
+                    Jetzt verbindlich zusagen
+                </a>
+            </div>
+        </section>
+
+        <section id="video">
+            <div class="container">
+                <h2>Eine Nachricht für Euch</h2>
+                <p>Wir möchten uns schon jetzt bei euch bedanken und haben ein kurzes Video mit allen wichtigen Infos für euch vorbereitet.</p>
+                
+                <div class="video-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+        
+        <section id="details">
+            <div class="container">
+                <h2>Alle Details auf einen Blick</h2>
+                <p>Hier findet ihr die wichtigsten Infos rund um unseren großen Tag, damit ihr perfekt vorbereitet seid.</p>
+                
+                <div class="details-grid">
+                    <div>
+                        <h3>Dresscode</h3>
+                        <p></p>
+                        
+                        <h3>Ablauf</h3>
+                        <p></p>
+                        
+                        <h3>Geschenke</h3>
+                        <p></p>
+                        
+                        <h3>Kinder</h3>
+                        <p>Kinder sind herzlich willkommen! Auf dem Gelände gibt es einen Spielplatz zum Toben. Bitte beachtet, dass es keine separate Kinderbetreuung geben wird und die Aufsichtspflicht bei den Eltern liegt.</p>
+                    </div>
+                    
+                    <div>
+                        <h3>Essen & Trinken</h3>
+                        <p></p>
+                        
+                        <h3>Musik & Tanz</h3>
+                        <p></p>
+                        
+                        <h3>Hotels</h3>
+                        <p></p>
+                        
+                        <h3>Ansprechpartner</h3>
+                        <p>Solltet ihr am Tag der Hochzeit Fragen haben (z.B. zum Ablauf oder ihr verspätet euch), wendet euch bitte an <strong>[NAME DES ANSPRECHPARTNERS]</strong>. Die Handynummer geben wir hier noch bekannt.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="music">
+            <div class="container">
+                <h2>Eure Songwünsche</h2>
+                <p>Damit die Tanzfläche bebt, brauchen wir eure Hilfe! Wir haben eine gemeinsame Spotify-Playlist erstellt, zu der ihr eure absoluten Lieblings-Tanzlieder hinzufügen könnt.</p>
+                
+                <div class="spotify-wrapper">
+                    <iframe 
+                        style="border-radius:12px" 
+                        src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYEmIw?utm_source=generator" 
+                        width="100%" 
+                        height="352" 
+                        frameBorder="0" 
+                        allowfullscreen="" 
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="location">
+            <div class="container">
+                <h2>Location & Anfahrt</h2>
+                
+                <div class="location-content">
+                    <div>
+                        <h3>Die Feier</h3>
+                        <p>Wir feiern in der <strong>[Name der Location]</strong>, [Adresse der Location].</p>
+                        
+                        <h3>Anfahrt (U-Bahn)</h3>
+                        <p></p>
+                        
+                        <div class="location-photos">
+                            <img src="https://via.placeholder.com/400x300.png?text=Location+Bild+1" alt="Foto der Hochzeitslocation 1">
+                            <img src="https://via.placeholder.com/400x300.png?text=Location+Bild+2" alt="Foto der Hochzeitslocation 2">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="map-wrapper">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.355106598813!2d11.57279381564917!3d48.1391266792237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479ddf5e1f0e8f63%3A0x6b9059c431e56536!2sMarienplatz!5e0!3m2!1sde!2sde!4v1678888888888" 
+                                width="600" 
+                                height="450" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Wir können es kaum erwarten, diesen Tag mit Euch zu teilen!</p>
+            <p>♥</p>
+            <p></p>
+        </div>
+    </footer>
+
+</body>
+</html>
