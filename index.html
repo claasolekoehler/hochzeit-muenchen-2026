@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-S">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wir heiraten! - [Eure Namen]</title>
     
@@ -100,8 +100,6 @@
         #rsvp h2, #rsvp p {
             text-align: center; /* Zentriert nur Überschrift und Text */
         }
-        
-        /* Das CSS für .rsvp-button wurde entfernt */
 
         /* 2. Video Sektion */
         .video-wrapper {
@@ -187,20 +185,43 @@
              margin-bottom: 0;
         }
         
+        /* NEU: Styling für Listen in den Details */
+        .details-content ul {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+        .details-content li {
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+        /* Styling für verschachtelte Listen (Essen) */
+        .details-content ul ul {
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* NEU: Button für Details-Sektion (z.B. Songwünsche) */
+        .details-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 12px 25px; /* Etwas kleiner als Hauptbutton */
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-top: 10px;
+        }
+        .details-button:hover {
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        }
+        
         /* --- Styling für Inhalte, die jetzt im Akkordeon sind --- */
         
-        /* Spotify Sektion */
-        .spotify-wrapper {
-            margin-top: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .spotify-wrapper iframe {
-            display: block;
-        }
-
         /* Location Sektion */
         .location-content {
             display: grid;
@@ -279,9 +300,7 @@
 
         <section id="rsvp">
             <div class="container">
-                <h2>Wir freuen uns auf Euch!</h2>
-                <p>Bitte gebt uns bis zum <strong>15.06.2026</strong> Bescheid, ob ihr dabei seid. Ihr könnt euch und eure Begleitung direkt hier im Kalender eintragen und uns eventuelle Allergien oder Wünsche mitteilen.</p>
-                
+                <h2>Verbindliche Anmeldung</h2>
                 <div class="zeeg-inline-widget" id="zeeg-embed-claas-und-phuong-hochzeit-claas-und-phuong-2026" style="min-width: 320px; height: 780px; margin: 30px auto 0 auto;"></div>
                 <script type="text/javascript" src="https://assets.zeeg.me/embed.min.js" data-user="claas-und-phuong" data-event-type="hochzeit-claas-und-phuong-2026" data-redirect-parent="true" async></script>
                 </div>
@@ -297,21 +316,45 @@
                     <details>
                         <summary>Ablauf</summary>
                         <div class="details-content">
-                            <p></p>
+                            <ul>
+                                <li><strong>18:00 Uhr:</strong> Empfang mit Aperitif</li>
+                                <li><strong>19:30 Uhr:</strong> Beginn 3-Gänge-Buffett</li>
+                                <li><strong>21:00 Uhr:</strong> Freigabe der Tanzfläche</li>
+                                <li><strong>24:00 Uhr:</strong> Ende der Veranstaltung</li>
+                            </ul>
                         </div>
                     </details>
                 
                     <details>
                         <summary>Dresscode</summary>
                         <div class="details-content">
-                            <p></p>
+                            <p><strong>Für Herren:</strong> Dunkler Anzug, dunkle Schuhe, weißes Hemd, gerne Krawatte oder Fliege.</p>
+                            <p><strong>Für Damen:</strong> Bitte bei der Kleidung auf die Farben Pink und Lila verzichten.</p>
                         </div>
                     </details>
                     
                     <details>
                         <summary>Essen & Trinken</summary>
                         <div class="details-content">
-                            <p></p>
+                            <p><strong>3 Gang ÖEINS Buffet (Suppe, Hauptspeise & Dessert)</strong></p>
+                            <ul>
+                                <li><strong>Suppe:</strong> Frittatensuppe</li>
+                                <li><strong>Hauptspeisen Auswahl:</strong>
+                                    <ul>
+                                        <li>Tiroler Jägerschnitzel mit hausgemachten Eierspätzle</li>
+                                        <li>Forellenfilet mit Petersilienerdäpfeln und Tomaten-Knoblauch-Butter</li>
+                                        <li>Veganes Erdäpfelgulasch mit Gebäck</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Dessert:</strong> Kaiserschmarrn mit Zwetschgenröster</li>
+                            </ul>
+                            <p>Weiteres besteht die Möglichkeit, für Kinder auch á la carte Kindergerichte zu bestellen!</p>
+                            <p><strong>Getränke:</strong></p>
+                            <ul>
+                                <li><strong>Zum Empfang:</strong> Steirischer Hugo Apero (Schilcher Frizzante, Holunder, Minze, Soda) bzw. alkoholfreier steirischer Hugo.</li>
+                                <li><strong>19:30 Uhr - 21:00 Uhr:</strong> Serviert werden Weißwein ("Riesling" Weingut Hagn), Rotwein ("Blauer Zweigelt" Weingut Hagn) sowie Wasser.</li>
+                            </ul>
+                            <p>Weitere Getränke müssen selbst bestellt und bezahlt werden.</p>
                         </div>
                     </details>
                     
@@ -325,28 +368,31 @@
                     <details>
                         <summary>Hotels</summary>
                         <div class="details-content">
-                            <p></p>
+                            <ul>
+                                <li><strong>Zentral:</strong> Hotel Motel One München-Sendlinger Tor (20 min mit den Öffis entfernt)</li>
+                                <li><strong>Nah:</strong> Hotel Cocoon Theresienwiese (9 min mit den Öffis entfernt, 11 min zu Fuß)</li>
+                                <li><strong>Besonders:</strong> Lion Homestay Munich - Private Unterkunft / Pension München (21 min mit den Öffis entfernt)</li>
+                                <li><strong>Nah an unserer Wohnung:</strong> The Dot | Hotel (17 min mit den Öffis entfernt)</li>
+                            </ul>
                         </div>
                     </details>
                     
                     <details>
                         <summary>Geschenke</summary>
                         <div class="details-content">
-                            <p></p>
-                        </div>
-                    </details>
-                    
-                    <details>
-                        <summary>Musik & Tanz</summary>
-                        <div class="details-content">
-                            <p></p>
+                            <p>Wir haben bereits alles, was wir für einen gemeinsamen Haushalt brauchen. Daher würden wir uns über Geldgeschenke für unsere Hochzeitsreise und zukünftige Pläne am meisten freuen.</p>
                         </div>
                     </details>
                     
                     <details>
                         <summary>Ansprechpartner</summary>
                         <div class="details-content">
-                            <p>Solltet ihr am Tag der Hochzeit Fragen haben (z.B. zum Ablauf oder ihr verspätet euch), wendet euch bitte an <strong>[NAME DES ANSPRECHPARTNERS]</strong>. Die Handynummer geben wir hier noch bekannt.</p>
+                            <p><strong>Tag der Hochzeit (Fragen, Verspätungen):</strong><br>
+                            Ben Stephani, 01623414300</p>
+                            <p><strong>Moderation (während der Feier):</strong><br>
+                            Jan Scherer</p>
+                            <p><strong>Fragen zu Bestellungen (Essen/Trinken):</strong><br>
+                            Restaurant ÖEINS, 08990141780, <a href="http://xn--eins-qia.de" target="_blank">öeins.de</a></p>
                         </div>
                     </details>
                     
@@ -355,15 +401,9 @@
                         <div class="details-content">
                             <p>Damit die Tanzfläche bebt, brauchen wir eure Hilfe! Wir haben eine gemeinsame Spotify-Playlist erstellt. Klickt auf den Link, um eure absoluten Lieblings-Tanzlieder hinzuzufügen:</p>
                             
-                            <p>
-                                <strong><a href="https://open.spotify.com/playlist/2rLR8kHvKOMxTGOflMvqEU?si=da6f2ea9c5ab4c3c&pt=bc7f11124e9e7591530dc5ecd53c3879" target="_blank">Hier klicken, um Songs zur Playlist hinzuzufügen</a></strong>
-                            </p>
-                            
-                            <p>Hier seht ihr, was schon alles auf der Liste steht:</p>
-                            
-                            <div class="spotify-wrapper">
-                                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2rLR8kHvKOMxTGOflMvqEU?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                            </div>
+                            <a href="https://open.spotify.com/playlist/2rLR8kHvKOMxTGOflMvqEU?si=da6f2ea9c5ab4c3c&pt=bc7f11124e9e7591530dc5ecd53c3879" target="_blank" class="details-button">
+                                Hier klicken, um Songs zur Playlist hinzuzufügen
+                            </a>
                         </div>
                     </details>
                     
@@ -373,7 +413,7 @@
                             <div class="location-content">
                                 <div>
                                     <h3>Die Feier</h3>
-                                    <p>Wir feiern in der <strong>[Name der Location]</strong>, [Adresse der Location].</p>
+                                    <p>Wir feiern in der <strong>Alte Scheune - Historischer Veranstaltungsraum im Stemmerhof</strong>, Plinganserstraße 6, 81369 München.</p>
                                     
                                     <h3>Anfahrt (U-Bahn)</h3>
                                     <p></p>
