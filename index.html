@@ -94,15 +94,25 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             display: block; /* Verhindert Leerräume unter Bildern */
         }
+        
+        /* NEU: Bildunterschriften (figcaption) */
+        figure {
+            margin: 0 0 15px 0; /* Standard-Margin von <p> übernehmen */
+        }
+        
+        figcaption {
+            text-align: center;
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #666;
+            padding: 10px 0;
+        }
 
         /* --- Sektionen --- */
         
-        /* 1. RSVP (Zeeg) Sektion */
-        #rsvp h2, #rsvp p {
-            text-align: center; /* Zentriert nur Überschrift und Text */
-        }
+        /* #rsvp Sektion-Styling entfernt, da jetzt im Akkordeon */
 
-        /* 2. Video Sektion */
+        /* Video Sektion (bleibt für das Akkordeon relevant) */
         .video-wrapper {
             position: relative;
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
@@ -110,7 +120,6 @@
             overflow: hidden;
             border-radius: 12px; /* Etwas runder */
             box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Weicherer Schatten */
-            margin-top: 20px;
         }
 
         .video-wrapper iframe {
@@ -122,7 +131,7 @@
             border: 0;
         }
         
-        /* 3. Details Sektion (Akkordeon Styling) */
+        /* --- Details Sektion (Akkordeon Styling) --- */
         
         .details-accordion {
             display: flex;
@@ -240,12 +249,63 @@
             border: 0;
         }
 
-        /* NEU: Image Gallery für Location-Bilder */
-        .image-gallery {
-            display: grid;
-            grid-template-columns: 1fr; /* Mobile first: 1 Spalte */
-            gap: 15px;
-            margin-top: 25px; /* Abstand zur Karte */
+        /* --- NEU: Styling für Bilder-Karussell --- */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            margin: 25px auto 0 auto; /* Abstand zur Karte */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            overflow: hidden; /* Wichtig für abgerundete Ecken der Bilder */
+        }
+
+        .carousel-slide {
+            display: none; /* Wird von JS gesteuert */
+        }
+        
+        .carousel-slide.active {
+            display: block; /* Zeigt das aktive Bild */
+        }
+
+        .carousel-slide img {
+            border-radius: 12px 12px 0 0; /* Oben abgerundet */
+            box-shadow: none; /* Schatten ist schon am Container */
+            width: 100%;
+        }
+
+        .carousel-slide figcaption {
+            background: #fff; /* Damit Text nicht über dem Bild schwebt */
+            padding: 15px;
+            margin: -5px 0 0 0; /* Verbindet sich nahtlos mit dem Bild */
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            width: 50px;
+            height: 50px;
+        }
+        
+        /* Korrektur für Figcaption, Button soll drüber sein */
+        .carousel-button.prev {
+            left: 15px;
+        }
+        .carousel-button.next {
+            right: 15px;
+        }
+        
+        .carousel-button:hover {
+            background-color: rgba(255, 255, 255, 1);
         }
 
 
@@ -264,11 +324,6 @@
             h2 {
                 font-size: 2.8rem;
             }
-
-            /* NEU: 2 Spalten für die Location-Galerie auf dem Desktop */
-            .image-gallery {
-                grid-template-columns: 1fr 1fr;
-            }
         }
 
     </style>
@@ -277,35 +332,34 @@
 
     <main>
     
-        <section id="video">
-            <div class="container">
-                <h2>Eine Nachricht für Euch</h2>
-                <div class="video-wrapper">
-                    <iframe 
-                        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-        </section>
-
-        <section id="rsvp">
-            <div class="container">
-                <h2>Verbindliche Anmeldung</h2>
-                
-                <div class="zeeg-inline-widget" id="zeeg-embed-claas-und-phuong-hochzeit-claas-und-phuong-2026" style="min-width: 320px; height: 780px; margin: 30px auto 0 auto;"></div>
-                <script type="text/javascript" src="https://assets.zeeg.me/embed.min.js" data-user="claas-und-phuong" data-event-type="hochzeit-claas-und-phuong-2026" data-redirect-parent="true" async></script>
-                </div>
-        </section>
-        
         <section id="details">
             <div class="container">
                 <h2>Alle Details auf einen Blick</h2>
                 
                 <div class="details-accordion">
+                
+                    <details>
+                        <summary>Begrüßung</summary>
+                        <div class="details-content">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                    title="YouTube video player" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    </details>
+                    
+                    <details>
+                        <summary>Anmeldung</summary>
+                        <div class="details-content">
+                            <div class="zeeg-inline-widget" id="zeeg-embed-claas-und-phuong-hochzeit-claas-und-phuong-2026" style="min-width: 320px; height: 780px; margin: 0 auto;"></div>
+                            <script type="text/javascript" src="https://assets.zeeg.me/embed.min.js" data-user="claas-und-phuong" data-event-type="hochzeit-claas-und-phuong-2026" data-redirect-parent="true" async></script>
+                            </div>
+                    </details>
                 
                     <details>
                         <summary>Location & Anfahrt</summary>
@@ -315,11 +369,34 @@
                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.4099840088606!2d11.537786612355037!3d48.12161645215184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479dd91136430b4d%3A0x71ef2812698cef6f!2sAlte%20Scheune%20-%20Historischer%20Veranstaltungsraum%20im%20Stemmerhof!5e0!3m2!1sde!2sde!4v1762775015835!5m2!1sde!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
 
-                            <div class="image-gallery">
-                                <img src="Stemmerhof von oben.jpg" alt="Stemmerhof von oben">
-                                <img src="Eingang Alte Scheune.jpg" alt="Eingang zur Alten Scheune">
-                                <img src="Alte Scheune von Innen.jpg" alt="Innenansicht der Alten Scheune">
-                                <img src="Alte Scheune von Innen Nr 2.jpg" alt="Innenansicht der Alten Scheune, gedeckte Tische">
+                            <div class="carousel-container" id="location-carousel">
+                                <div class="carousel-slide active">
+                                    <figure>
+                                        <img src="Stemmerhof von oben.jpg" alt="Stemmerhof von oben">
+                                        <figcaption>Der Stemmerhof aus der Vogelperspektive.</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="carousel-slide">
+                                    <figure>
+                                        <img src="Eingang Alte Scheune.jpg" alt="Eingang zur Alten Scheune">
+                                        <figcaption>Der Eingang zur "Alten Scheune" (Restaurant ÖEINS).</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="carousel-slide">
+                                    <figure>
+                                        <img src="Alte Scheune von Innen.jpg" alt="Innenansicht der Alten Scheune">
+                                        <figcaption>Innenansicht der "Alten Scheune".</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="carousel-slide">
+                                    <figure>
+                                        <img src="Alte Scheune von Innen Nr 2.jpg" alt="Innenansicht der Alten Scheune, gedeckte Tische">
+                                        <figcaption>Die "Alte Scheune" mit gedeckten Tischen.</figcaption>
+                                    </figure>
+                                </div>
+                                
+                                <button class="carousel-button prev">&#10094;</button>
+                                <button class="carousel-button next">&#10095;</button>
                             </div>
                         </div>
                     </details>
@@ -374,7 +451,10 @@
                         <div class="details-content">
                             <p>Kinder sind herzlich willkommen! Auf dem Gelände gibt es einen Spielplatz zum Toben. Bitte beachtet, dass es keine separate Kinderbetreuung geben wird und die Aufsichtspflicht bei den Eltern liegt.</p>
                             
-                            <img src="Spielplatz Stemmerhof.jpg" alt="Spielplatz im Stemmerhof" style="margin-top: 20px;">
+                            <figure>
+                                <img src="Spielplatz Stemmerhof.jpg" alt="Spielplatz im Stemmerhof" style="margin-top: 20px;">
+                                <figcaption>Der Spielplatz im Innenhof des Stemmerhofs.</figcaption>
+                            </figure>
                         </div>
                     </details>
                     
@@ -433,6 +513,55 @@
             <p>Claas & Phuong</p>
         </div>
     </footer>
+    
+    <script>
+        (function() {
+            // Finde alle Karussells auf der Seite (falls es mehrere gäbe)
+            document.querySelectorAll('.carousel-container').forEach(function(carousel) {
+                
+                const slides = carousel.querySelectorAll('.carousel-slide');
+                const prevBtn = carousel.querySelector('.prev');
+                const nextBtn = carousel.querySelector('.next');
+                let currentSlide = 0;
+
+                // Funktion, um das richtige Bild anzuzeigen
+                function showSlide(n) {
+                    // Verstecke alle Bilder
+                    slides.forEach(function(slide) {
+                        slide.style.display = 'none';
+                        slide.classList.remove('active');
+                    });
+                    
+                    // Index-Handling (vorne/hinten rum)
+                    if (n >= slides.length) {
+                        currentSlide = 0; // Springt zum ersten
+                    } else if (n < 0) {
+                        currentSlide = slides.length - 1; // Springt zum letzten
+                    } else {
+                        currentSlide = n;
+                    }
+                    
+                    // Zeige das aktuelle Bild
+                    if (slides[currentSlide]) {
+                        slides[currentSlide].style.display = 'block';
+                        slides[currentSlide].classList.add('active');
+                    }
+                }
+
+                // Event Listeners für die Pfeile
+                prevBtn.addEventListener('click', function() {
+                    showSlide(currentSlide - 1);
+                });
+
+                nextBtn.addEventListener('click', function() {
+                    showSlide(currentSlide + 1);
+                });
+
+                // Zeige das erste Bild beim Laden der Seite
+                showSlide(0);
+            });
+        })();
+    </script>
 
 </body>
 </html>
