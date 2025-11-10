@@ -89,27 +89,6 @@
         a:hover {
             text-decoration: underline;
         }
-        
-        /* Starker Button (für RSVP und Spotify-Link) */
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: #fff !important; /* Wichtig, um Linkfarbe zu überschreiben */
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            margin-top: 10px;
-        }
-        
-        .cta-button:hover {
-            text-decoration: none;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-        }
 
         img {
             max-width: 100%;
@@ -141,6 +120,25 @@
         #rsvp {
             text-align: center;
         }
+        
+        .rsvp-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .rsvp-button:hover {
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
 
         /* 2. Video Sektion */
         .video-wrapper {
@@ -162,24 +160,76 @@
             border: 0;
         }
         
-        /* 3. Details Sektion (Grid für Desktop) */
-        .details-grid {
-            display: grid;
-            grid-template-columns: 1fr; /* Mobile: 1 Spalte */
-            gap: 30px;
+        /* 3. Details Sektion (NEU: Akkordeon Styling) */
+        
+        /* Das alte .details-grid CSS wurde entfernt */
+        
+        .details-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Abstand zwischen den Akkordeon-Elementen */
+            margin-top: 25px;
         }
+
+        details {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: background-color 0.2s ease;
+        }
+        
+        details:hover {
+            background: #fcfcfc;
+        }
+
+        summary {
+            font-family: var(--heading-font);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            padding: 20px;
+            cursor: pointer;
+            list-style: none; /* Standard-Pfeil/Marker entfernen */
+            position: relative;
+            padding-right: 50px; /* Platz für den Indikator */
+        }
+
+        /* Benutzerdefinierten Indikator (Pfeil) hinzufügen */
+        summary::after {
+            content: '▼';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.9rem;
+            transition: transform 0.2s ease;
+            color: var(--text-color);
+        }
+        
+        /* Standard-Pfeil für Webkit-Browser (Safari, Chrome) ausblenden */
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details[open] summary::after {
+            transform: translateY(-50%) rotate(180deg); /* Pfeil dreht sich beim Öffnen */
+        }
+
+        /* Inhalt innerhalb des Akkordeons */
+        details p {
+            padding: 0 20px 20px 20px;
+            margin-bottom: 0;
+            color: var(--text-color);
+        }
+
         
         /* 4. Spotify Sektion */
-        #music {
-            text-align: center;
-        }
-        
         .spotify-wrapper {
             margin-top: 25px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             border-radius: 12px; /* Spotify empfiehlt 12px */
             overflow: hidden; /* Stellt sicher, dass der iframe die abgerundeten Ecken übernimmt */
-            margin-bottom: 30px; /* Platz für den Button */
         }
 
         .spotify-wrapper iframe {
@@ -201,11 +251,7 @@
         
         .map-wrapper {
             position: relative;
-            /* * Das CSS steuert das Seitenverhältnis. 
-             * 75% (4:3) ist oft besser für Karten als 16:9.
-             * Die width/height im iframe-Tag werden ignoriert, was korrekt ist.
-            */
-            padding-bottom: 75%; 
+            padding-bottom: 75%; /* 4:3 Aspect Ratio (default 300/400) */
             height: 0;
             overflow: hidden;
             border-radius: 8px;
@@ -240,16 +286,8 @@
                 font-size: 2.8rem;
             }
             
-            #music {
-                text-align: left;
-            }
+            /* Das .details-grid Media Query wurde entfernt */
 
-            /* Details Sektion auf Desktop (2 Spalten) */
-            .details-grid {
-                grid-template-columns: 1fr 1fr; /* Desktop: 2 Spalten */
-                gap: 50px;
-            }
-            
             /* Location Sektion auf Desktop (2 Spalten) */
             #location .location-content {
                 grid-template-columns: 1fr 1fr;
@@ -277,7 +315,7 @@
                 <p>Bitte gebt uns bis zum <strong>[DATUM DER FRIST]</strong> Bescheid, ob ihr dabei sein könnt. Über den folgenden Link könnt ihr euch und eure Begleitung verbindlich anmelden und uns eventuelle Allergien oder Wünsche mitteilen.</p>
                 <br>
                 
-                <a href="#" target="_blank" class="cta-button">
+                <a href="#" target="_blank" class="rsvp-button">
                     Jetzt verbindlich zusagen
                 </a>
             </div>
@@ -303,36 +341,50 @@
         <section id="details">
             <div class="container">
                 <h2>Alle Details auf einen Blick</h2>
-                <p>Hier findet ihr die wichtigsten Infos rund um unseren großen Tag, damit ihr perfekt vorbereitet seid.</p>
+                <p>Hier findet ihr die wichtigsten Infos rund um unseren großen Tag. Klickt einfach auf ein Thema, um mehr zu erfahren.</p>
                 
-                <div class="details-grid">
-                    <div>
-                        <h3>Dresscode</h3>
+                <div class="details-accordion">
+                
+                    <details>
+                        <summary>Ablauf</summary>
                         <p></p>
-                        
-                        <h3>Ablauf</h3>
+                    </details>
+                
+                    <details>
+                        <summary>Dresscode</summary>
                         <p></p>
-                        
-                        <h3>Geschenke</h3>
-                        <p></p>
-                        
-                        <h3>Kinder</h3>
-                        <p>Kinder sind herzlich willkommen! Auf dem Gelände gibt es einen Spielplatz zum Toben. Bitte beachtet, dass es keine separate Kinderbetreuung geben wird und die Aufsichtspflicht bei den Eltern liegt.</p>
-                    </div>
+                    </details>
                     
-                    <div>
-                        <h3>Essen & Trinken</h3>
+                    <details>
+                        <summary>Essen & Trinken</summary>
                         <p></p>
-                        
-                        <h3>Musik & Tanz</h3>
+                    </details>
+                    
+                    <details>
+                        <summary>Kinder</summary>
+                        <p>Kinder sind herzlich willkommen! Auf dem Gelände gibt es einen Spielplatz zum Toben. Bitte beachtet, dass es keine separate Kinderbetreuung geben wird und die Aufsichtspflicht bei den Eltern liegt.</p>
+                    </details>
+                    
+                    <details>
+                        <summary>Hotels</summary>
                         <p></p>
-                        
-                        <h3>Hotels</h3>
+                    </details>
+                    
+                    <details>
+                        <summary>Geschenke</summary>
                         <p></p>
-                        
-                        <h3>Ansprechpartner</h3>
+                    </details>
+                    
+                    <details>
+                        <summary>Musik & Tanz</summary>
+                        <p></p>
+                    </details>
+                    
+                    <details>
+                        <summary>Ansprechpartner</summary>
                         <p>Solltet ihr am Tag der Hochzeit Fragen haben (z.B. zum Ablauf oder ihr verspätet euch), wendet euch bitte an <strong>[NAME DES ANSPRECHPARTNERS]</strong>. Die Handynummer geben wir hier noch bekannt.</p>
-                    </div>
+                    </details>
+                    
                 </div>
             </div>
         </section>
@@ -340,15 +392,17 @@
         <section id="music">
             <div class="container">
                 <h2>Eure Songwünsche</h2>
-                <p>Damit die Tanzfläche bebt, brauchen wir eure Hilfe! Hier könnt ihr unsere Playlist anhören und über den Button eure absoluten Lieblings-Tanzlieder hinzufügen.</p>
+                <p>Damit die Tanzfläche bebt, brauchen wir eure Hilfe! Wir haben eine gemeinsame Spotify-Playlist erstellt. Klickt auf den Link, um eure absoluten Lieblings-Tanzlieder hinzuzufügen:</p>
+                
+                <p>
+                    <strong><a href="https://open.spotify.com/playlist/2rLR8kHvKOMxTGOflMvqEU?si=da6f2ea9c5ab4c3c&pt=bc7f11124e9e7591530dc5ecd53c3879" target="_blank">Hier klicken, um Songs zur Playlist hinzuzufügen</a></strong>
+                </p>
+                
+                <p>Hier seht ihr, was schon alles auf der Liste steht:</p>
                 
                 <div class="spotify-wrapper">
                     <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2rLR8kHvKOMxTGOflMvqEU?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
-                
-                <a href="https://open.spotify.com/playlist/2rLR8kHvKOMxTGOflMvqEU?si=da6f2ea9c5ab4c3c&pt=bc7f11124e9e7591530dc5ecd53c3879" target="_blank" class="cta-button">
-                    Song zur Playlist hinzufügen
-                </a>
             </div>
         </section>
 
@@ -372,7 +426,7 @@
                     
                     <div>
                         <div class="map-wrapper">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.409984002598!2d11.537791976103847!3d48.121616452272626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479dd91136430b4d%3A0x71ef2812698cef6f!2sAlte%20Scheune%20-%20Historischer%20Veranstaltungsraum%20im%20Stemmerhof!5e0!3m2!1sde!2sde!4v1762680753651!5m2!1sde!2sde" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.409984002598!2d11.537791976103847!3d48.121616452272626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479dd91136430b4d%3A0x71ef2812698cef6f!2sAlte%20Scheune%20-%20Historischer%20Veranstaltungsraum%20im%20Stemmerhof!5e0!3m2!1sde!2sde!4v1762680753651!5m2!1sde!2sde" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
