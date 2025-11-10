@@ -87,11 +87,12 @@
             text-decoration: underline;
         }
 
+        /* img-Styling bleibt für evtl. zukünftige Bilder, z.B. im Footer */
         img {
             max-width: 100%;
             height: auto;
-            border-radius: 12px; /* Etwas runder */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Weicherer Schatten */
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
 
         /* --- Sektionen --- */
@@ -185,7 +186,7 @@
              margin-bottom: 0;
         }
         
-        /* NEU: Styling für Listen in den Details */
+        /* Styling für Listen in den Details */
         .details-content ul {
             padding-left: 25px;
             margin-bottom: 15px;
@@ -200,7 +201,7 @@
             margin-bottom: 8px;
         }
 
-        /* NEU: Button für Details-Sektion (z.B. Songwünsche) */
+        /* Button für Details-Sektion (z.B. Songwünsche) */
         .details-button {
             display: inline-block;
             background-color: var(--accent-color);
@@ -220,29 +221,14 @@
             box-shadow: 0 6px 14px rgba(0,0,0,0.15);
         }
         
-        /* --- Styling für Inhalte, die jetzt im Akkordeon sind --- */
-        
-        /* Location Sektion */
-        .location-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            margin-top: 15px;
-        }
-        
-        .location-photos {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-        
         .map-wrapper {
             position: relative;
-            padding-bottom: 75%;
+            padding-bottom: 75%; /* 4:3 Verhältnis (passend zu 600x450) */
             height: 0;
             overflow: hidden;
             border-radius: 12px; /* Runder */
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            margin-top: 5px; /* Kleiner Abstand nach oben, falls Details-Content padding 0 hat */
         }
         
         .map-wrapper iframe {
@@ -268,12 +254,6 @@
         @media (min-width: 768px) {
             h2 {
                 font-size: 2.8rem;
-            }
-            
-            .location-content {
-                grid-template-columns: 1fr 1fr;
-                gap: 40px;
-                align-items: center;
             }
         }
 
@@ -317,24 +297,8 @@
                     <details>
                         <summary>Location & Anfahrt</summary>
                         <div class="details-content">
-                            <div class="location-content">
-                                <div>
-                                    <h3>Die Feier</h3>
-                                    <p>Wir feiern in der <strong>Alte Scheune - Historischer Veranstaltungsraum im Stemmerhof</strong>, Plinganserstraße 6, 81369 München.</p>
-                                    
-                                    <h3>Anfahrt (U-Bahn)</h3>
-                                    <p></p>
-                                    
-                                    <div class="location-photos">
-                                        <img src="https://via.placeholder.com/400x300.png?text=Location+Bild+1" alt="Foto der Hochzeitslocation 1">
-                                        <img src="https://via.placeholder.com/400x300.png?text=Location+Bild+2" alt="Foto der Hochzeitslocation 2">
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="map-wrapper">
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.409984002598!2d11.537791976103847!3d48.121616452272626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479dd91136430b4d%3A0x71ef2812698cef6f!2sAlte%20Scheune%20-%20Historischer%20Veranstaltungsraum%20im%20Stemmerhof!5e0!3m2!1sde!2sde!4v1762680753651!5m2!1sde!2sde" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                    </div>
-                                </div>
+                            <div class="map-wrapper">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.4099840088606!2d11.537786612355037!3d48.12161645215184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479dd91136430b4d%3A0x71ef2812698cef6f!2sAlte%20Scheune%20-%20Historischer%20Veranstaltungsraum%20im%20Stemmerhof!5e0!3m2!1sde!2sde!4v1762775015835!5m2!1sde!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </details>
@@ -346,7 +310,7 @@
                                 <li><strong>17:45 Uhr:</strong> Empfang mit Aperitif</li>
                                 <li><strong>19:30 Uhr:</strong> Beginn 3-Gänge-Buffett</li>
                                 <li><strong>21:00 Uhr:</strong> Freigabe der Tanzfläche</li>
-                                <li><strong>24:00 Uhr:</strong> Ende der Veranstaltung</li>
+                                <li><strong>23:45 Uhr:</strong> Ende der Veranstaltung</li>
                             </ul>
                         </div>
                     </details>
