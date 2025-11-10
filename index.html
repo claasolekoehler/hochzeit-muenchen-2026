@@ -87,12 +87,12 @@
             text-decoration: underline;
         }
 
-        /* img-Styling bleibt für evtl. zukünftige Bilder, z.B. im Footer */
         img {
             max-width: 100%;
             height: auto;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            display: block; /* Verhindert Leerräume unter Bildern */
         }
 
         /* --- Sektionen --- */
@@ -228,7 +228,7 @@
             overflow: hidden;
             border-radius: 12px; /* Runder */
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            margin-top: 5px; /* Kleiner Abstand nach oben, falls Details-Content padding 0 hat */
+            margin-top: 5px; 
         }
         
         .map-wrapper iframe {
@@ -239,6 +239,15 @@
             height: 100%;
             border: 0;
         }
+
+        /* NEU: Image Gallery für Location-Bilder */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: 1fr; /* Mobile first: 1 Spalte */
+            gap: 15px;
+            margin-top: 25px; /* Abstand zur Karte */
+        }
+
 
         /* --- Footer --- */
         footer {
@@ -254,6 +263,11 @@
         @media (min-width: 768px) {
             h2 {
                 font-size: 2.8rem;
+            }
+
+            /* NEU: 2 Spalten für die Location-Galerie auf dem Desktop */
+            .image-gallery {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
@@ -290,13 +304,22 @@
         <section id="details">
             <div class="container">
                 <h2>Alle Details auf einen Blick</h2>
+                
                 <div class="details-accordion">
                 
                     <details>
                         <summary>Location & Anfahrt</summary>
                         <div class="details-content">
+                            
                             <div class="map-wrapper">
                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.4099840088606!2d11.537786612355037!3d48.12161645215184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479dd91136430b4d%3A0x71ef2812698cef6f!2sAlte%20Scheune%20-%20Historischer%20Veranstaltungsraum%20im%20Stemmerhof!5e0!3m2!1sde!2sde!4v1762775015835!5m2!1sde!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+
+                            <div class="image-gallery">
+                                <img src="Stemmerhof von oben.jpg" alt="Stemmerhof von oben">
+                                <img src="Eingang Alte Scheune.jpg" alt="Eingang zur Alten Scheune">
+                                <img src="Alte Scheune von Innen.jpg" alt="Innenansicht der Alten Scheune">
+                                <img src="Alte Scheune von Innen Nr 2.jpg" alt="Innenansicht der Alten Scheune, gedeckte Tische">
                             </div>
                         </div>
                     </details>
@@ -330,7 +353,7 @@
                                 <li><strong>Hauptspeisen Auswahl:</strong>
                                     <ul>
                                         <li>Tiroler Jägerschnitzel mit hausgemachten Eierspätzle</li>
-                                        <li>Forellenfilet mit Petersilienerdäpfeln und Tomaten-Knoblauch-Butter</li>
+                                        <li>Forellenfilet mit Petersilienerdäpfeln und Tomaten-Knoblatch-Butter</li>
                                         <li>Veganes Erdäpfelgulasch mit Gebäck</li>
                                     </ul>
                                 </li>
@@ -342,7 +365,7 @@
                                 <li><strong>Zum Empfang:</strong> Steirischer Hugo Apero (Schilcher Frizzante, Holunder, Minze, Soda) bzw. alkoholfreier steirischer Hugo.</li>
                                 <li><strong>19:30 Uhr - 21:00 Uhr:</strong> Serviert werden Weißwein ("Riesling" Weingut Hagn), Rotwein ("Blauer Zweigelt" Weingut Hagn) sowie Wasser.</li>
                             </ul>
-                            <p>Es wird keine "open bar" geben. Weitere Getränke (außerhalb des Empfangs und der o.g. Tischgetränke) müssen selbst bestellt und bezahlt werden.</p>
+                            <p>Es wird keine "open bar" geben. Weitere Getränke (außerhalb des Empfangs und der o.g. Tischgetränke) müssen selbst bestellt und direkt bar oder per Karte (EC, Visa oder Mastercard) bezahlt werden.</p>
                         </div>
                     </details>
                     
@@ -350,6 +373,8 @@
                         <summary>Kinder</summary>
                         <div class="details-content">
                             <p>Kinder sind herzlich willkommen! Auf dem Gelände gibt es einen Spielplatz zum Toben. Bitte beachtet, dass es keine separate Kinderbetreuung geben wird und die Aufsichtspflicht bei den Eltern liegt.</p>
+                            
+                            <img src="Spielplatz Stemmerhof.jpg" alt="Spielplatz im Stemmerhof" style="margin-top: 20px;">
                         </div>
                     </details>
                     
