@@ -221,6 +221,8 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             margin-top: 10px;
+            width: 100%; /* Passt sich der Karte an */
+            text-align: center;
         }
         .details-button:hover {
             text-decoration: none;
@@ -294,7 +296,6 @@
             height: 50px;
         }
         
-        /* Korrektur für Figcaption, Button soll drüber sein */
         .carousel-button.prev {
             left: 15px;
         }
@@ -306,6 +307,51 @@
             background-color: rgba(255, 255, 255, 1);
         }
 
+        /* --- NEU: Styling für PayPal Geschenk-Pools --- */
+        .gift-pool-container {
+            display: grid;
+            grid-template-columns: 1fr; /* 1 Spalte auf Mobile */
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .gift-pool-card {
+            background: #fdfdfd; /* Leicht vom Akkordeon-BG abgehoben */
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gift-pool-card h3 {
+            font-family: var(--heading-font); /* Nutzt die elegante Schrift */
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-top: 0; /* h3-Standard-Margin überschreiben */
+            margin-bottom: 15px;
+        }
+
+        .gift-pool-card .pool-description {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 15px;
+            flex-grow: 1; /* Stellt sicher, dass Buttons unten ausgerichtet sind */
+        }
+
+        .gift-pool-card .pool-goal {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        
+        .gift-pool-card .details-button {
+            margin-top: auto; /* Klebt unten */
+        }
 
         /* --- Footer --- */
         footer {
@@ -321,6 +367,11 @@
         @media (min-width: 768px) {
             h2 {
                 font-size: 2.8rem;
+            }
+
+            /* NEU: 3 Spalten für die Geschenk-Pools */
+            .gift-pool-container {
+                grid-template-columns: 1fr 1fr 1fr;
             }
         }
 
@@ -483,7 +534,33 @@
                     <details>
                         <summary>Geschenke</summary>
                         <div class="details-content">
-                            <p>Wir haben bereits alles, was wir für einen gemeinsamen Haushalt brauchen. Daher würden wir uns über Geldgeschenke für unsere Hochzeitsreise und zukünftige Pläne am meisten freuen.</p>
+                            <p>Wir haben bereits alles, was wir für einen gemeinsamen Haushalt brauchen. Falls ihr uns dennoch eine Freude machen wollt, freuen wir uns über einen Beitrag zu unseren Träumen.</p>
+                            <p>Wir haben hierfür drei "Pools" erstellt (Midlife-Crisis optional ;-)):</p>
+
+                            <div class="gift-pool-container">
+
+                                <div class="gift-pool-card">
+                                    <h3>Hochzeitsreise nach Vietnam</h3>
+                                    <p class="pool-description">"Ermögliche uns eine schöne Hochzeitsreise nach Vietnam im September!"</p>
+                                    <p class="pool-goal">Ziel: 1.500,00 €</p>
+                                    <a href="https://www.paypal.com/pool/9jVvZYOqXA?sr=wccr" target="_blank" class="details-button">Jetzt beteiligen</a>
+                                </div>
+
+                                <div class="gift-pool-card">
+                                    <h3>Therme Erding Sauna-Wochenende</h3>
+                                    <p class="pool-description">"Gönnt uns ein entspanntes Wochenende in der Therme Erding!"</p>
+                                    <p class="pool-goal">Ziel: 500,00 €</p>
+                                    <a href="https://www.paypal.com/pool/9jVwBu8owF?sr=wccr" target="_blank" class="details-button">Jetzt beteiligen</a>
+                                </div>
+
+                                <div class="gift-pool-card">
+                                    <h3>Midlife-Crisis</h3>
+                                    <p class="pool-description">"Sei der Teufel in Person und stifte uns dazu an, unnötige Dinge zu kaufen (Motorradführerschein und teure Schuhe)."</p>
+                                    <p class="pool-goal">Ziel: 1.000,00 €</p>
+                                    <a href="https://www.paypal.com/pool/9jVxhG7Bi2?sr=wccr" target="_blank" class="details-button">Jetzt beteiligen</a>
+                                </div>
+
+                            </div>
                         </div>
                     </details>
                     
