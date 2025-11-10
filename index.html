@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-S">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wir heiraten! - Claas & Phuong</title>
+    <title>Wir heiraten! - [Eure Namen]</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 
@@ -13,10 +14,10 @@
         /* --- Globales Styling & Mobile First --- */
         
         :root {
-            --bg-color: #f0f8ff; /* Sehr helles Himmelblau, passend zum Aquarell */
+            --bg-color: #f0f8ff; /* Sehr helles Himmelblau */
             --text-color: #333333; /* Dunklerer, gut lesbarer Text */
             --accent-color: #5c82a1; /* Ein sattes, gedecktes Mittelblau */
-            --heading-font: 'Cormorant Garamond', serif; /* Elegant, wie die Handschrift */
+            --heading-font: 'Cormorant Garamond', serif; /* Elegant */
             --body-font: 'Montserrat', sans-serif; /* Modern und gut lesbar */
         }
 
@@ -96,28 +97,11 @@
         /* --- Sektionen --- */
         
         /* 1. RSVP (Zeeg) Sektion */
-        #rsvp {
-            text-align: center;
+        #rsvp h2, #rsvp p {
+            text-align: center; /* Zentriert nur Überschrift und Text */
         }
         
-        .rsvp-button {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: #fff;
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        .rsvp-button:hover {
-            text-decoration: none;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-        }
+        /* Das CSS für .rsvp-button wurde entfernt */
 
         /* 2. Video Sektion */
         .video-wrapper {
@@ -296,13 +280,11 @@
         <section id="rsvp">
             <div class="container">
                 <h2>Wir freuen uns auf Euch!</h2>
-                <p>Bitte gebt uns bis zum <strong>15.06.2026</strong> Bescheid, ob ihr dabei sein könnt. Über den folgenden Link könnt ihr euch und eure Begleitung verbindlich anmelden und uns eventuelle Allergien oder Wünsche mitteilen.</p>
-                <br>
+                <p>Bitte gebt uns bis zum <strong>15.06.2026</strong> Bescheid, ob ihr dabei seid. Ihr könnt euch und eure Begleitung direkt hier im Kalender eintragen und uns eventuelle Allergien oder Wünsche mitteilen.</p>
                 
-                <a href="#" target="_blank" class="rsvp-button">
-                    Jetzt verbindlich zusagen
-                </a>
-            </div>
+                <div class="zeeg-inline-widget" id="zeeg-embed-claas-und-phuong-hochzeit-claas-und-phuong-2026" style="min-width: 320px; height: 780px; margin: 30px auto 0 auto;"></div>
+                <script type="text/javascript" src="https://assets.zeeg.me/embed.min.js" data-user="claas-und-phuong" data-event-type="hochzeit-claas-und-phuong-2026" data-redirect-parent="true" async></script>
+                </div>
         </section>
         
         <section id="details">
