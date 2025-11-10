@@ -66,12 +66,20 @@
             display: inline-block;
         }
         
+        /* h3 wird jetzt auch im Akkordeon-Inhalt verwendet (Essen&Trinken) */
         h3 {
-            font-family: var(--body-font); /* Leichtere Überschriften im Akkordeon */
+            font-family: var(--body-font); 
             font-size: 1.5rem;
             color: #555;
             margin-top: 25px;
+            font-weight: 700; /* Etwas mehr Gewicht */
         }
+        
+        /* Erste h3 im details-content soll keinen Top-Margin haben */
+        .details-content h3:first-child {
+            margin-top: 5px;
+        }
+
 
         p {
             margin-bottom: 15px;
@@ -97,7 +105,7 @@
         
         /* Bildunterschriften (figcaption) */
         figure {
-            margin: 0 0 15px 0; /* Standard-Margin von <p> übernehmen */
+            margin: 20px 0 15px 0; /* Mehr Abstand nach oben */
         }
         
         figcaption {
@@ -307,7 +315,7 @@
             background-color: rgba(255, 255, 255, 1);
         }
 
-        /* --- NEU: Styling für PayPal Geschenk-Pools --- */
+        /* --- Styling für PayPal Geschenk-Pools --- */
         .gift-pool-container {
             display: grid;
             grid-template-columns: 1fr; /* 1 Spalte auf Mobile */
@@ -369,7 +377,7 @@
                 font-size: 2.8rem;
             }
 
-            /* NEU: 3 Spalten für die Geschenk-Pools */
+            /* 3 Spalten für die Geschenk-Pools */
             .gift-pool-container {
                 grid-template-columns: 1fr 1fr 1fr;
             }
@@ -467,16 +475,28 @@
                         <div class="details-content">
                             <p><strong>Für Herren:</strong> Dunkler Anzug, dunkle Schuhe, weißes Hemd, gerne Krawatte oder Fliege.</p>
                             <p><strong>Für Damen:</strong> Bitte bei der Kleidung auf die Farben Pink und Lila verzichten.</p>
+                            
+                            <figure>
+                                <img src="Beispielbild Hochzeit Dresscode.png" alt="Beispielbild für den Dresscode der Hochzeit">
+                                <figcaption>Inspiration für euren Look (Beispielbild).</figcaption>
+                            </figure>
                         </div>
                     </details>
                     
                     <details>
                         <summary>Essen & Trinken</summary>
                         <div class="details-content">
-                            <p><strong>3 Gang ÖEINS Buffet (Suppe, Hauptspeise & Dessert)</strong></p>
+                            <h3>Empfang (ab 17:45 Uhr)</h3>
+                            <ul>
+                                <li>Steirischer Hugo Apero (Schilcher Frizzante, Holunder, Minze, Soda)</li>
+                                <li>Alkoholfreier steirischer Hugo</li>
+                            </ul>
+
+                            <h3>Buffet (ab 19:30 Uhr)</h3>
+                            <p><strong>3 Gang ÖEINS Buffet:</strong></p>
                             <ul>
                                 <li><strong>Suppe:</strong> Frittatensuppe</li>
-                                <li><strong>Hauptspeisen Auswahl:</strong>
+                                <li><strong>Hauptspeisen:</strong>
                                     <ul>
                                         <li>Tiroler Jägerschnitzel mit hausgemachten Eierspätzle</li>
                                         <li>Forellenfilet mit Petersilienerdäpfeln und Tomaten-Knoblatch-Butter</li>
@@ -485,13 +505,19 @@
                                 </li>
                                 <li><strong>Dessert:</strong> Kaiserschmarrn mit Zwetschgenröster</li>
                             </ul>
-                            <p>Weiteres besteht die Möglichkeit, für Kinder auch á la carte Kindergerichte zu bestellen!</p>
-                            <p><strong>Getränke:</strong></p>
+                            
+                            <p><strong>Tischgetränke (19:30 - 21:00 Uhr):</strong></p>
                             <ul>
-                                <li><strong>Zum Empfang:</strong> Steirischer Hugo Apero (Schilcher Frizzante, Holunder, Minze, Soda) bzw. alkoholfreier steirischer Hugo.</li>
-                                <li><strong>19:30 Uhr - 21:00 Uhr:</strong> Serviert werden Weißwein ("Riesling" Weingut Hagn), Rotwein ("Blauer Zweigelt" Weingut Hagn) sowie Wasser.</li>
+                                <li>Weißwein: "Riesling" Weingut Hagn</li>
+                                <li>Rotwein: "Blauer Zweigelt" Weingut Hagn</li>
+                                <li>Wasser</li>
                             </ul>
-                            <p>Es wird keine "open bar" geben. Weitere Getränke (außerhalb des Empfangs und der o.g. Tischgetränke) müssen selbst bestellt und direkt bar oder per Karte (EC, Visa oder Mastercard) bezahlt werden.</p>
+
+                            <h3>Hinweise</h3>
+                            <ul>
+                                <li>Für Kinder besteht die Möglichkeit, á la carte Kindergerichte zu bestellen.</li>
+                                <li>Es wird keine "open bar" geben. Weitere Getränke (außerhalb des Empfangs und der o.g. Tischgetränke) müssen selbst bestellt und direkt bar oder per Karte (EC, Visa oder Mastercard) bezahlt werden.</li>
+                            </ul>
                         </div>
                     </details>
                     
