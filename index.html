@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wir heiraten! - [Eure Namen]</title>
+    <title>Wir heiraten! - Claas & Phuong</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
         /* --- Globales Styling & Mobile First --- */
         
         :root {
-            --bg-color: #fdfaf6; /* Warmes Creme/Weiß */
-            --text-color: #4a4a4a; /* Dunkelgrau */
-            --accent-color: #8A9A8D; /* Salbeigrün */
-            --heading-font: 'Playfair Display', serif;
-            --body-font: 'Lato', sans-serif;
+            --bg-color: #f0f8ff; /* Sehr helles Himmelblau, passend zum Aquarell */
+            --text-color: #333333; /* Dunklerer, gut lesbarer Text */
+            --accent-color: #5c82a1; /* Ein sattes, gedecktes Mittelblau */
+            --heading-font: 'Cormorant Garamond', serif; /* Elegant, wie die Handschrift */
+            --body-font: 'Montserrat', sans-serif; /* Modern und gut lesbar */
         }
 
         * {
@@ -43,7 +43,7 @@
 
         section {
             padding: 40px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(0,0,0,0.05); /* Dezenterer Trenner */
         }
 
         section:last-of-type {
@@ -58,11 +58,6 @@
             line-height: 1.3;
         }
 
-        h1 {
-            font-size: 2.8rem;
-            text-align: center;
-        }
-
         h2 {
             font-size: 2.2rem;
             border-bottom: 2px solid var(--accent-color);
@@ -71,6 +66,7 @@
         }
         
         h3 {
+            font-family: var(--body-font); /* Leichtere Überschriften im Akkordeon */
             font-size: 1.5rem;
             color: #555;
             margin-top: 25px;
@@ -93,25 +89,8 @@
         img {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        /* --- Header / Hero --- */
-        .header {
-            text-align: center;
-            padding: 60px 0;
-            background-color: #fff;
-        }
-        
-        .header h1 {
-            margin-bottom: 10px;
-        }
-
-        .header .sub-title {
-            font-size: 1.4rem;
-            font-family: var(--heading-font);
-            font-style: italic;
+            border-radius: 12px; /* Etwas runder */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Weicherer Schatten */
         }
 
         /* --- Sektionen --- */
@@ -131,13 +110,13 @@
             font-weight: 700;
             text-decoration: none;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
         .rsvp-button:hover {
             text-decoration: none;
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
         }
 
         /* 2. Video Sektion */
@@ -146,8 +125,8 @@
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
             overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 12px; /* Etwas runder */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Weicherer Schatten */
             margin-top: 20px;
         }
 
@@ -160,102 +139,105 @@
             border: 0;
         }
         
-        /* 3. Details Sektion (NEU: Akkordeon Styling) */
-        
-        /* Das alte .details-grid CSS wurde entfernt */
+        /* 3. Details Sektion (Akkordeon Styling) */
         
         .details-accordion {
             display: flex;
             flex-direction: column;
-            gap: 15px; /* Abstand zwischen den Akkordeon-Elementen */
+            gap: 15px;
             margin-top: 25px;
         }
 
         details {
             background: #fff;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: background-color 0.2s ease;
+            border: 1px solid rgba(0,0,0,0.08); /* Dezenterer Rahmen */
+            border-radius: 12px; /* Runder */
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05); /* Weicherer Schatten */
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
         }
         
         details:hover {
-            background: #fcfcfc;
+            background: #fdfdfd;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.08);
         }
 
         summary {
-            font-family: var(--heading-font);
-            font-size: 1.4rem;
+            font-family: var(--heading-font); /* Überschrift wie im Header */
+            font-size: 1.5rem; /* Etwas größer */
             font-weight: 700;
             color: var(--accent-color);
             padding: 20px;
             cursor: pointer;
-            list-style: none; /* Standard-Pfeil/Marker entfernen */
+            list-style: none;
             position: relative;
-            padding-right: 50px; /* Platz für den Indikator */
+            padding-right: 50px;
         }
 
-        /* Benutzerdefinierten Indikator (Pfeil) hinzufügen */
         summary::after {
             content: '▼';
             position: absolute;
             right: 20px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 0.9rem;
+            font-size: 1rem; /* Etwas größerer Pfeil */
             transition: transform 0.2s ease;
-            color: var(--text-color);
+            color: var(--accent-color); /* Pfeil in Akzentfarbe */
         }
         
-        /* Standard-Pfeil für Webkit-Browser (Safari, Chrome) ausblenden */
         summary::-webkit-details-marker {
             display: none;
         }
 
         details[open] summary::after {
-            transform: translateY(-50%) rotate(180deg); /* Pfeil dreht sich beim Öffnen */
+            transform: translateY(-50%) rotate(180deg);
         }
 
-        /* Inhalt innerhalb des Akkordeons */
-        details p {
+        .details-content {
             padding: 0 20px 20px 20px;
-            margin-bottom: 0;
             color: var(--text-color);
         }
-
+        .details-content p {
+             margin-bottom: 15px;
+        }
+        .details-content p:last-child {
+             margin-bottom: 0;
+        }
         
-        /* 4. Spotify Sektion */
+        /* --- Styling für Inhalte, die jetzt im Akkordeon sind --- */
+        
+        /* Spotify Sektion */
         .spotify-wrapper {
-            margin-top: 25px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border-radius: 12px; /* Spotify empfiehlt 12px */
-            overflow: hidden; /* Stellt sicher, dass der iframe die abgerundeten Ecken übernimmt */
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            overflow: hidden;
         }
 
         .spotify-wrapper iframe {
-            display: block; /* Verhindert Leerräume unter dem iframe */
+            display: block;
         }
 
-        /* 5. Location Sektion */
-        #location .location-content {
+        /* Location Sektion */
+        .location-content {
             display: grid;
             grid-template-columns: 1fr;
             gap: 30px;
+            margin-top: 15px;
         }
         
         .location-photos {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* 2 Spalten für Fotos */
+            grid-template-columns: 1fr 1fr;
             gap: 15px;
         }
         
         .map-wrapper {
             position: relative;
-            padding-bottom: 75%; /* 4:3 Aspect Ratio (default 300/400) */
+            padding-bottom: 75%;
             height: 0;
             overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 12px; /* Runder */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
         
         .map-wrapper iframe {
@@ -273,23 +255,17 @@
             padding: 40px 0;
             font-size: 0.9rem;
             color: #888;
+            border-top: 1px solid rgba(0,0,0,0.05);
         }
         
         /* --- Responsive: Desktop Ansicht --- */
         
         @media (min-width: 768px) {
-            h1 {
-                font-size: 4rem;
-            }
-            
             h2 {
                 font-size: 2.8rem;
             }
             
-            /* Das .details-grid Media Query wurde entfernt */
-
-            /* Location Sektion auf Desktop (2 Spalten) */
-            #location .location-content {
+            .location-content {
                 grid-template-columns: 1fr 1fr;
                 gap: 40px;
                 align-items: center;
@@ -300,32 +276,11 @@
 </head>
 <body>
 
-    <header class="header">
-        <div class="container">
-            <h1></h1>
-            <p class="sub-title">Wir heiraten!</p>
-            <p><strong>15. August 2026</strong></p>
-        </div>
-    </header>
-
     <main>
-        <section id="rsvp">
-            <div class="container">
-                <h2>Wir freuen uns auf Euch!</h2>
-                <p>Bitte gebt uns bis zum <strong>[DATUM DER FRIST]</strong> Bescheid, ob ihr dabei sein könnt. Über den folgenden Link könnt ihr euch und eure Begleitung verbindlich anmelden und uns eventuelle Allergien oder Wünsche mitteilen.</p>
-                <br>
-                
-                <a href="#" target="_blank" class="rsvp-button">
-                    Jetzt verbindlich zusagen
-                </a>
-            </div>
-        </section>
-
+    
         <section id="video">
             <div class="container">
                 <h2>Eine Nachricht für Euch</h2>
-                <p>Wir möchten uns schon jetzt bei euch bedanken und haben ein kurzes Video mit allen wichtigen Infos für euch vorbereitet.</p>
-                
                 <div class="video-wrapper">
                     <iframe 
                         src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
@@ -335,6 +290,18 @@
                         allowfullscreen>
                     </iframe>
                 </div>
+            </div>
+        </section>
+
+        <section id="rsvp">
+            <div class="container">
+                <h2>Wir freuen uns auf Euch!</h2>
+                <p>Bitte gebt uns bis zum <strong>15.06.2026</strong> Bescheid, ob ihr dabei sein könnt. Über den folgenden Link könnt ihr euch und eure Begleitung verbindlich anmelden und uns eventuelle Allergien oder Wünsche mitteilen.</p>
+                <br>
+                
+                <a href="#" target="_blank" class="rsvp-button">
+                    Jetzt verbindlich zusagen
+                </a>
             </div>
         </section>
         
@@ -347,92 +314,107 @@
                 
                     <details>
                         <summary>Ablauf</summary>
-                        <p></p>
+                        <div class="details-content">
+                            <p></p>
+                        </div>
                     </details>
                 
                     <details>
                         <summary>Dresscode</summary>
-                        <p></p>
+                        <div class="details-content">
+                            <p></p>
+                        </div>
                     </details>
                     
                     <details>
                         <summary>Essen & Trinken</summary>
-                        <p></p>
+                        <div class="details-content">
+                            <p></p>
+                        </div>
                     </details>
                     
                     <details>
                         <summary>Kinder</summary>
-                        <p>Kinder sind herzlich willkommen! Auf dem Gelände gibt es einen Spielplatz zum Toben. Bitte beachtet, dass es keine separate Kinderbetreuung geben wird und die Aufsichtspflicht bei den Eltern liegt.</p>
+                        <div class="details-content">
+                            <p>Kinder sind herzlich willkommen! Auf dem Gelände gibt es einen Spielplatz zum Toben. Bitte beachtet, dass es keine separate Kinderbetreuung geben wird und die Aufsichtspflicht bei den Eltern liegt.</p>
+                        </div>
                     </details>
                     
                     <details>
                         <summary>Hotels</summary>
-                        <p></p>
+                        <div class="details-content">
+                            <p></p>
+                        </div>
                     </details>
                     
                     <details>
                         <summary>Geschenke</summary>
-                        <p></p>
+                        <div class="details-content">
+                            <p></p>
+                        </div>
                     </details>
                     
                     <details>
                         <summary>Musik & Tanz</summary>
-                        <p></p>
+                        <div class="details-content">
+                            <p></p>
+                        </div>
                     </details>
                     
                     <details>
                         <summary>Ansprechpartner</summary>
-                        <p>Solltet ihr am Tag der Hochzeit Fragen haben (z.B. zum Ablauf oder ihr verspätet euch), wendet euch bitte an <strong>[NAME DES ANSPRECHPARTNERS]</strong>. Die Handynummer geben wir hier noch bekannt.</p>
+                        <div class="details-content">
+                            <p>Solltet ihr am Tag der Hochzeit Fragen haben (z.B. zum Ablauf oder ihr verspätet euch), wendet euch bitte an <strong>[NAME DES ANSPRECHPARTNERS]</strong>. Die Handynummer geben wir hier noch bekannt.</p>
+                        </div>
+                    </details>
+                    
+                    <details>
+                        <summary>Songwünsche</summary>
+                        <div class="details-content">
+                            <p>Damit die Tanzfläche bebt, brauchen wir eure Hilfe! Wir haben eine gemeinsame Spotify-Playlist erstellt. Klickt auf den Link, um eure absoluten Lieblings-Tanzlieder hinzuzufügen:</p>
+                            
+                            <p>
+                                <strong><a href="https://open.spotify.com/playlist/2rLR8kHvKOMxTGOflMvqEU?si=da6f2ea9c5ab4c3c&pt=bc7f11124e9e7591530dc5ecd53c3879" target="_blank">Hier klicken, um Songs zur Playlist hinzuzufügen</a></strong>
+                            </p>
+                            
+                            <p>Hier seht ihr, was schon alles auf der Liste steht:</p>
+                            
+                            <div class="spotify-wrapper">
+                                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2rLR8kHvKOMxTGOflMvqEU?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </details>
+                    
+                    <details>
+                        <summary>Location & Anfahrt</summary>
+                        <div class="details-content">
+                            <div class="location-content">
+                                <div>
+                                    <h3>Die Feier</h3>
+                                    <p>Wir feiern in der <strong>[Name der Location]</strong>, [Adresse der Location].</p>
+                                    
+                                    <h3>Anfahrt (U-Bahn)</h3>
+                                    <p></p>
+                                    
+                                    <div class="location-photos">
+                                        <img src="https://via.placeholder.com/400x300.png?text=Location+Bild+1" alt="Foto der Hochzeitslocation 1">
+                                        <img src="https://via.placeholder.com/400x300.png?text=Location+Bild+2" alt="Foto der Hochzeitslocation 2">
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="map-wrapper">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.409984002598!2d11.537791976103847!3d48.121616452272626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479dd91136430b4d%3A0x71ef2812698cef6f!2sAlte%20Scheune%20-%20Historischer%20Veranstaltungsraum%20im%20Stemmerhof!5e0!3m2!1sde!2sde!4v1762680753651!5m2!1sde!2sde" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </details>
                     
                 </div>
             </div>
         </section>
 
-        <section id="music">
-            <div class="container">
-                <h2>Eure Songwünsche</h2>
-                <p>Damit die Tanzfläche bebt, brauchen wir eure Hilfe! Wir haben eine gemeinsame Spotify-Playlist erstellt. Klickt auf den Link, um eure absoluten Lieblings-Tanzlieder hinzuzufügen:</p>
-                
-                <p>
-                    <strong><a href="https://open.spotify.com/playlist/2rLR8kHvKOMxTGOflMvqEU?si=da6f2ea9c5ab4c3c&pt=bc7f11124e9e7591530dc5ecd53c3879" target="_blank">Hier klicken, um Songs zur Playlist hinzuzufügen</a></strong>
-                </p>
-                
-                <p>Hier seht ihr, was schon alles auf der Liste steht:</p>
-                
-                <div class="spotify-wrapper">
-                    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2rLR8kHvKOMxTGOflMvqEU?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                </div>
-            </div>
-        </section>
-
-        <section id="location">
-            <div class="container">
-                <h2>Location & Anfahrt</h2>
-                
-                <div class="location-content">
-                    <div>
-                        <h3>Die Feier</h3>
-                        <p>Wir feiern in der <strong>[Name der Location]</strong>, [Adresse der Location].</p>
-                        
-                        <h3>Anfahrt (U-Bahn)</h3>
-                        <p></p>
-                        
-                        <div class="location-photos">
-                            <img src="https://via.placeholder.com/400x300.png?text=Location+Bild+1" alt="Foto der Hochzeitslocation 1">
-                            <img src="https://via.placeholder.com/400x300.png?text=Location+Bild+2" alt="Foto der Hochzeitslocation 2">
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <div class="map-wrapper">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.409984002598!2d11.537791976103847!3d48.121616452272626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479dd91136430b4d%3A0x71ef2812698cef6f!2sAlte%20Scheune%20-%20Historischer%20Veranstaltungsraum%20im%20Stemmerhof!5e0!3m2!1sde!2sde!4v1762680753651!5m2!1sde!2sde" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        </main>
 
     <footer>
         <div class="container">
