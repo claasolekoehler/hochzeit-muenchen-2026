@@ -530,10 +530,23 @@
                             <p><strong>Für Herren:</strong> Dunkler Anzug, dunkle Schuhe, weißes Hemd, gerne Krawatte oder Fliege.</p>
                             <p><strong>Für Damen:</strong> Bitte bei der Kleidung auf die Farben Pink und Lila verzichten.</p>
                             
-                            <figure>
-                                <img src="Beispielbild Hochzeit Dresscode.png" alt="Beispielbild für den Dresscode der Hochzeit">
-                                <figcaption>Inspiration für euren Look (Beispielbild).</figcaption>
-                            </figure>
+                            <div class="carousel-container" id="dresscode-carousel">
+                                <div class="carousel-slide active">
+                                    <figure>
+                                        <img src="Beispielbild Hochzeit Dresscode.png" alt="Beispielbild für den Dresscode der Hochzeit">
+                                        <figcaption>Inspiration für euren Look.</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="carousel-slide">
+                                    <figure>
+                                        <img src="Dresscode NoGo.png" alt="Beispielbild für den NoGo-Dresscode der Hochzeit">
+                                        <figcaption>Bitte auf diese Farben verzichten (No-Go).</figcaption>
+                                    </figure>
+                                </div>
+                                
+                                <button class="carousel-button prev">❮</button>
+                                <button class="carousel-button next">❯</button>
+                            </div>
                         </div>
                     </details>
                     
@@ -679,39 +692,36 @@
     
     <script>
         (function() {
-            // Finde alle Karussells auf der Seite (falls es mehrere gäbe)
-            document.querySelectorAll('.carousel-container').forEach(function(carousel) {
-                
+            // Funktion zum Initialisieren eines Karussells
+            function initializeCarousel(carouselId) {
+                const carousel = document.getElementById(carouselId);
+                if (!carousel) return; // Beende, wenn Karussell nicht gefunden wird
+
                 const slides = carousel.querySelectorAll('.carousel-slide');
                 const prevBtn = carousel.querySelector('.prev');
                 const nextBtn = carousel.querySelector('.next');
                 let currentSlide = 0;
 
-                // Funktion, um das richtige Bild anzuzeigen
                 function showSlide(n) {
-                    // Verstecke alle Bilder
                     slides.forEach(function(slide) {
                         slide.style.display = 'none';
                         slide.classList.remove('active');
                     });
                     
-                    // Index-Handling (vorne/hinten rum)
                     if (n >= slides.length) {
-                        currentSlide = 0; // Springt zum ersten
+                        currentSlide = 0;
                     } else if (n < 0) {
-                        currentSlide = slides.length - 1; // Springt zum letzten
+                        currentSlide = slides.length - 1;
                     } else {
                         currentSlide = n;
                     }
                     
-                    // Zeige das aktuelle Bild
                     if (slides[currentSlide]) {
                         slides[currentSlide].style.display = 'block';
                         slides[currentSlide].classList.add('active');
                     }
                 }
 
-                // Event Listeners für die Pfeile
                 prevBtn.addEventListener('click', function() {
                     showSlide(currentSlide - 1);
                 });
@@ -720,9 +730,14 @@
                     showSlide(currentSlide + 1);
                 });
 
-                // Zeige das erste Bild beim Laden der Seite
-                showSlide(0);
-            });
+                showSlide(0); // Zeige das erste Bild beim Initialisieren
+            }
+
+            // Initialisiere das Location-Karussell
+            initializeCarousel('location-carousel');
+            
+            // Initialisiere das Dresscode-Karussell
+            initializeCarousel('dresscode-carousel');
         })();
     </script>
 
