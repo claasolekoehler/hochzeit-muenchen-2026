@@ -29,7 +29,16 @@
 
         body {
             font-family: var(--body-font);
-            background-color: var(--bg-color);
+            
+            /* --- HINTERGRUND-ÄNDERUNG --- */
+            background-image: url('hintergrund.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: var(--bg-color); /* Fallback-Farbe */
+            /* --- ENDE DER ÄNDERUNG --- */
+
             color: var(--text-color);
             line-height: 1.7;
             font-weight: 300;
