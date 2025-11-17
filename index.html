@@ -478,9 +478,15 @@
             h2 {
                 font-size: 2.8rem;
             }
-            /* --- NEU: Fix für Desktop-Hintergrund --- */
+            /* --- NEU: Fix für Desktop-Hintergrund (Hochformat-Bild) --- */
             body {
-                background-attachment: scroll; /* Deaktiviert 'fixed' auf dem Desktop */
+                /* Zeigt das ganze Bild, ohne zu zoomen */
+                background-size: contain; 
+                /* 'fixed' sorgt dafür, dass das Bild stehen bleibt, 
+                   'scroll' würde es normal mitschrollen lassen. 
+                   Du kannst 'scroll' statt 'fixed' testen, wenn du magst.
+                */
+                background-attachment: fixed; 
             }
             /* --- Ende des Fix --- */
 
