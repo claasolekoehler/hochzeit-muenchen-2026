@@ -432,7 +432,8 @@
 
 .hotel-card-image {
     width: 100%;
-    height: 180px; 
+    /* height: 180px; */ /* <-- Alte feste Höhe entfernt */
+    aspect-ratio: 16 / 9;   /* <-- NEU: Sorgt für ein 16:9 Seitenverhältnis */
     object-fit: cover;
     border-bottom: 1px solid #eee;
     /* Überschreibt globale img-Stile für diesen Zweck */
