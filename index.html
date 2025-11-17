@@ -69,10 +69,16 @@
         }
 
         h2 {
-            font-size: 2.2rem;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-            display: inline-block;
+    font-size: 2.2rem;
+    /* border-bottom: 2px solid var(--accent-color); */ /* <-- Alte Linie entfernt */
+    /* padding-bottom: 10px; */ /* <-- Alter Abstand entfernt */
+    display: inline-block;
+    
+    /* --- NEU FÜR DEN KASTEN --- */
+    background-color: #fff;     /* Weiße Füllung */
+    padding: 15px 25px;         /* Innenabstand (oben/unten | links/rechts) */
+    border-radius: 12px;        /* Abgerundete Ecken (passend zum Akkordeon) */
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05); /* Optional: Passt zum Stil */
         }
         
         /* h3 wird jetzt auch im Akkordeon-Inhalt verwendet (Essen&Trinken) */
