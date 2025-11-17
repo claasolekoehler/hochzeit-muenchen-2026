@@ -260,7 +260,7 @@
             overflow: hidden;
             border-radius: 12px; /* Runder */
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            margin-top: 5px; 
+            margin-top: 0; /* Wird jetzt von .content-stack gesteuert */
         }
         
         .map-wrapper iframe {
@@ -276,7 +276,7 @@
         .carousel-container {
             position: relative;
             width: 100%;
-            margin: 25px auto 0 auto; /* Abstand zur Karte */
+            margin: 0 auto; /* Top-Margin wird von .content-stack gesteuert */
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             border-radius: 12px;
             overflow: hidden; /* Wichtig für abgerundete Ecken der Bilder */
@@ -390,6 +390,14 @@
             margin-top: 25px;
         }
 
+/* --- NEU: Container für gestapelte Inhalts-Boxen --- */
+        .content-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Einheitlicher Abstand zwischen Boxen, Maps und Karussells */
+            margin-top: 25px; /* Passt zum margin von .gift-pool-container etc. */
+        }
+        
         .contact-card {
             background: #fdfdfd;
             border: 1px solid rgba(0,0,0,0.05);
@@ -477,12 +485,14 @@
 <details>
     <summary>Location & Anfahrt</summary>
     <div class="details-content">
-
+    <div class="content-stack">
+        
+            <div class="contact-card">
         <p>
             <strong>Achtung:</strong> Der Stemmerhof liegt in der Innenstadt. Es gibt keine Parkplätze vor Ort oder in der Nähe.
         </p>
         
-         <p><strong>Empfehlung:</strong> Nehmt die Öffis oder lauft vom Hotel aus hin. Die Haltestelle "Harras" ist südlich die Plinganserstraße runter, guckt es euch bei Google Maps an:
+        <p style="margin-bottom: 0;"><strong>Empfehlung:</strong> Nehmt die Öffis oder lauft vom Hotel aus hin. Die Haltestelle "Harras" ist südlich die Plinganserstraße runter, guckt es euch bei Google Maps an:
         </p>
 
         <div class="map-wrapper">
@@ -519,36 +529,48 @@
             <button class="carousel-button next">❯</button>
         </div>
     </div>
+        </div> </div>
 </details>
                 
                     <details>
                         <summary>Hotels</summary>
                         <div class="details-content">
-                            <ul>
+                            <div class="content-stack">
+                                <div class="contact-card">
+                                <ul style="margin-bottom: 0;">
                                 <li><strong>Zentral in München:</strong> <a href="https://maps.app.goo.gl/cVoYJCPLh73Wfdkt9" target="_blank">Hotel Motel One München-Sendlinger Tor</a></li>
                                 <li><strong>Nah an der Hochzeit:</strong> <a href="https://maps.app.goo.gl/5pAyzSjt8EWtpRTr7" target="_blank">Hotel Cocoon Theresienwiese</a> oder <a href="https://maps.app.goo.gl/tbMtuitBfFQ3uiHPA" target="_blank">The Dot | Hotel</a></li>
                                 <li><strong>Besonders:</strong> <a href="https://maps.app.goo.gl/CXG7xCYW34eZpRU56" target="_blank">Lion Homestay Munich</a></li>
                             </ul>
+                                </div>
+                           </div>
                         </div>
                     </details>
                     
                     <details>
                         <summary>Ablauf</summary>
                         <div class="details-content">
-                            <ul>
+                            <div class="content-stack">
+                                <div class="contact-card">
+                                <ul style="margin-bottom: 0;">
                                 <li><strong>18:00 Uhr:</strong> Empfang mit Aperitif</li>
                                 <li><strong>19:30 Uhr:</strong> Beginn 3-Gänge-Buffett</li>
                                 <li><strong>21:30 Uhr:</strong> Freigabe der Tanzfläche</li>
                                 <li><strong>24:00 Uhr:</strong> Ende der Veranstaltung</li>
                             </ul>
+                               </div>
+                           </div>
                         </div>
                     </details>
                 
                     <details>
                         <summary>Dresscode</summary>
                         <div class="details-content">
+                            <div class="content-stack">
+                            
+                                <div class="contact-card">
                             <p><strong>Für Herren:</strong> Dunkler Anzug, dunkle Schuhe, weißes Hemd, gerne Krawatte oder Fliege.</p>
-                            <p><strong>Für Damen:</strong> Bitte bei der Kleidung auf die Farben Weiß, Pink, und Lila verzichten. Alle anderen Farben sind OK.</p>
+                            <p style="margin-bottom: 0;"><strong>Für Damen:</strong> Bitte bei der Kleidung auf die Farben Weiß, Pink, und Lila verzichten. Alle anderen Farben sind OK.</p>
                             
                             <div class="carousel-container" id="dresscode-carousel">
                                 <div class="carousel-slide active">
@@ -574,11 +596,14 @@
                                 <button class="carousel-button next">❯</button>
                             </div>
                         </div>
+                                </div> </div>
                     </details>
                     
                     <details>
                         <summary>Essen & Trinken</summary>
                         <div class="details-content">
+                            <div class="content-stack">
+                                <div class="contact-card">
                             
                             <h3>Empfang ab 18:00 Uhr</h3>
                             <ul>
@@ -606,24 +631,30 @@
                             </ul>
 
                             <h3>Hinweise</h3>
-                            <ul>
+                            <ul style="margin-bottom: 0;">
                                 <li>Für Kinder besteht die Möglichkeit, á la carte Kindergerichte zu bestellen.</li>
                                 <li>Es wird keine "open bar" geben. Weitere Getränke (außerhalb des Empfangs und der o.g. Tischgetränke) müssen selbst bestellt und direkt bar oder per Karte (EC, Visa oder Mastercard) bezahlt werden.</li>
                             </ul>
+                        </div>
+                        </div>
                         </div>
                     </details>
                     
                     <details>
                         <summary>Kinder</summary>
                         <div class="details-content">
+                            <div class="content-stack">
+                                <div class="contact-card">
                         <p>Kinder sind herzlich willkommen! Auf dem Gelände gibt es einen Spielplatz zum Toben.</p>
                         <p>Zusätzlich wird es ein Kinderprogramm geben: Frieda und Steffi bereiten lustige Spiele für die Altersgruppe 2-6 Jahre vor.</p>
                         <p>Bitte beachtet, dass dies keine durchgehende Betreuung ersetzt und die Aufsichtspflicht bei den Eltern liegt.</p>
                             
-                            <figure>
+                        <figure style="margin-bottom: 0;">
                                 <img src="Spielplatz Stemmerhof.jpg" alt="Spielplatz im Stemmerhof" style="margin-top: 20px;">
                                 <figcaption>Der Spielplatz im Innenhof des Stemmerhofs.</figcaption>
                             </figure>
+                        </div>
+                        </div>
                         </div>
                     </details>
                     
