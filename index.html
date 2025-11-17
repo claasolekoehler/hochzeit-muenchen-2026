@@ -478,17 +478,14 @@
             h2 {
                 font-size: 2.8rem;
             }
-            /* --- NEU: Fix für Desktop-Hintergrund (Hochformat-Bild) --- */
+            /* --- Desktop-Hintergrund: Füllt die Breite & scrollt --- */
             body {
-                /* Zeigt das ganze Bild, ohne zu zoomen */
-                background-size: contain; 
-                /* 'fixed' sorgt dafür, dass das Bild stehen bleibt, 
-                   'scroll' würde es normal mitschrollen lassen. 
-                   Du kannst 'scroll' statt 'fixed' testen, wenn du magst.
-                */
-                background-attachment: fixed; 
+                /* 'cover' füllt die Breite (verursacht Zoom bei Hochformat-Bild) */
+                background-size: cover; 
+                /* 'scroll' lässt das Bild mit der Seite scrollen */
+                background-attachment: scroll; 
             }
-            /* --- Ende des Fix --- */
+            /* --- Ende --- */
 
             /* 3 Spalten für die Geschenk-Pools */
             .gift-pool-container {
